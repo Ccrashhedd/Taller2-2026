@@ -1,81 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escaneando</title>
+    <title>Sistema Escáner de Artículos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
-    <header class="contendor">
-        <div id="headCont">
-            <h1>Escaneando...</h1>
-            <p>El camino a tu corazon bb</p>
+    <header class="hero py-4">
+        <div class="container">
+            <div class="hero-card">
+                <p class="eyebrow mb-2">Taller 2 - Desarrollo de Software IX</p>
+                <h1 class="mb-2">Sistema de Registro de Artículos con Escáner</h1>
+                <p class="mb-0 texto-suave">
+                    Escanea un código de barras o escríbelo manualmente en el campo de búsqueda y presiona Enter.
+                    Si el producto existe, se mostrará su información. Si no existe, podrás registrarlo de inmediato.
+                </p>
+            </div>
         </div>
     </header>
 
-    <main class="contenedor">
-        <div id="mainCont">
-            <div id="busqueda">
-                <label for="busquedaInput">Buscar producto:</label>
-                <input type="text" id="busquedaInput" name="busquedaInput">
+    <main class="container pb-5">
+        <section class="row g-4">
+            <div class="col-12 col-lg-4">
+                <div class="panel shadow-sm h-100">
+                    <div class="panel-header">
+                        <h2>Lectura y formulario</h2>
+                        <span id="estadoFormulario" class="estado-formulario">Esperando lectura o búsqueda de código de barras.</span>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="mb-3">
+                            <label for="busquedaInput" class="form-label">Buscar producto por código</label>
+                            <input type="text" id="busquedaInput" name="busquedaInput" class="form-control" placeholder="Ejemplo: 7501031311309" autocomplete="off">
+                        </div>
+
+                        <div id="mensajeEstado" class="mensaje mensaje-info">Sistema listo para trabajar.</div>
+
+                        <form id="productForm" action="#" method="post" class="mt-3">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label for="idProducto" class="form-label">Id Producto</label>
+                                    <input type="text" id="idProducto" name="idProducto" class="form-control" disabled>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="codigoBarra" class="form-label">Código de barras</label>
+                                    <input type="text" id="codigoBarra" name="codigoBarra" class="form-control" disabled>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control" disabled>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="precio" class="form-label">Precio</label>
+                                    <input type="number" id="precio" name="precio" class="form-control" min="0" step="0.0001" disabled>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="stock" class="form-label">Cantidad</label>
+                                    <input type="number" id="stock" name="stock" class="form-control" min="0" step="1" disabled>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="categoria" class="form-label">Categoría</label>
+                                    <input type="text" id="categoria" name="categoria" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="panel-footer">
+                        <button id="btnGuardar" class="btn btn-success">Guardar</button>
+                        <button id="btnEditar" class="btn btn-primary">Editar</button>
+                        <button id="btnCancelarEdit" class="btn btn-outline-secondary" disabled>Cancelar</button>
+                        <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
+                    </div>
+                </div>
             </div>
 
-            <div id="formCont">
-                <button id="btnEliminar">Eliminar</button>
-                <form id="productForm" action="#" method="post">
-                    <label>Id Producto:</label>
-                    <input type="text" id="idProducto" name="idProducto" disabled>
-                    <label>Codigo de Barra:</label>
-                    <input type="text" id="codigoBarra" name="codigoBarra" disabled>
-                    <label>Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" disabled>
-                    <label>Precio:</label>
-                    <input type="text" id="precio" name="precio" disabled>
-                    <label>Stock:</label>
-                    <input type="text" id="stock" name="stock" disabled>
-                    <label>Categoria:</label>
-                    <input type="text" id="categoria" name="categoria" disabled>
-                </form>
-                <button id="btnGuardar">Guardar</button>
-                <button id="btnEditar">Editar</button>
-                <button id="btnCancelarEdit" disabled>Cancelar</button>
-                
+            <div class="col-12 col-lg-8">
+                <div class="panel shadow-sm h-100">
+                    <div class="panel-header">
+                        <h2>Listado general de artículos</h2>
+                        <span class="estado-formulario">Haz clic en una fila para cargar el producto.</span>
+                    </div>
+
+                    <div class="panel-body tabla-contenedor">
+                        <div class="table-responsive">
+                            <table id="tablaProductos" class="table align-middle table-hover mb-0">
+                                <thead id="tableHead">
+                                    <tr>
+                                        <th>Id Producto</th>
+                                        <th>Código de Barras</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Stock</th>
+                                        <th>Categoría</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablebody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div id="tabla">
-                <table id="tablaProductos">
-                    <thead id="tableHead">
-                        <tr>
-                            <td>Id Producto</td>
-                            <td>Codigo de Barra</td>
-                            <td>Nombre</td>
-                            <td>Precio</td>
-                            <td>Stock</td>
-                            <td>Categoria</td>
-                        </tr>
-                    </thead>
-                    <tbody id="tablebody">
-
-                    </tbody>
-                    <tfoot id="tableFoot">
-
-                    </tfoot>
-                </table>
-
-            </div>
-            
-        </div>
+        </section>
     </main>
 
-    <footer class="contenedor">
-        <div id="footCont">
-
-        </div>
-    </footer>
-    
-    
+    <script src="../JS/app.js"></script>
 </body>
-<dialog>
-
-</dialog>
 </html>
