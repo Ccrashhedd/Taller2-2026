@@ -1,0 +1,119 @@
+body {
+    background-color: rgb(40, 20, 58);
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+
+#headCont {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#headCont h1 {
+    font-size: 2.5em;
+    text-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
+    font-style: italic;
+    font-weight: bold;
+}
+
+#headCont p {
+    font-size: 1.2em;
+    text-shadow: 5px 3px 5px rgba(0, 0, 0, 0.5);
+    font-style: italic;
+}
+
+#mainCont {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+#busqueda {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+#busqueda input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+#contentRow {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+#formCont {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+#productForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#productForm label {
+    margin-top: 10px;
+}
+
+#productForm input {
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+#formCont button {
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: blueviolet;
+    cursor: pointer;
+}
+
+#formCont button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+#tabla {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+#Productos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#Productos td {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
