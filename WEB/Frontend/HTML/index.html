@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escaneando</title>
+</head>
+<body>
+    <header class="contendor">
+        <div id="headCont">
+            <h1>Escaneando...</h1>
+            <p>El camino a tu corazon bb</p>
+        </div>
+    </header>
+
+    <main class="contenedor">
+        <div id="mainCont">
+            <div id="busqueda">
+                <label for="busquedaInput">Buscar producto:</label>
+                <input type="text" id="busquedaInput" name="busquedaInput">
+            </div>
+
+            <div id="formCont">
+                <button id="btnEliminar">Eliminar</button>
+                <form id="productForm" action="#" method="post">
+                    <label>Id Producto:</label>
+                    <input type="text" id="idProducto" name="idProducto" disabled>
+                    <label>Codigo de Barra:</label>
+                    <input type="text" id="codigoBarra" name="codigoBarra" disabled>
+                    <label>Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" disabled>
+                    <label>Precio:</label>
+                    <input type="text" id="precio" name="precio" disabled>
+                    <label>Stock:</label>
+                    <input type="text" id="stock" name="stock" disabled>
+                    <label>Categoria:</label>
+                    <input type="text" id="categoria" name="categoria" disabled>
+                </form>
+                <button id="btnGuardar">Guardar</button>
+                <button id="btnEditar">Editar</button>
+                <button id="btnCancelarEdit" disabled>Cancelar</button>
+                
+            </div>
+
+            <div id="tabla">
+                <table id="tablaProductos">
+                    <thead id="tableHead">
+
+                    </thead>
+                    <tbody id="tablebody">
+
+                    </tbody>
+                    <tfoot id="tableFoot">
+
+                    </tfoot>
+                </table>
+
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="contenedor">
+        <div id="footCont">
+
+        </div>
+    </footer>
+    
+    
+</body>
+<dialog>
+
+</dialog>
+</html>
